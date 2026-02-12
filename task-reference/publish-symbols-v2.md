@@ -210,8 +210,10 @@ Specifies the number of days that symbols should be retained.
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies which debug formats to publish to the symbol server.
 
-- `Default` is `Pdb`
-- `All` is `Pdb` and `SourceMap`
+- `Default`: The default is `Pdb`
+- `Pdb`: Only Pdb based symbols Windows pdb's and managed Portable pdb's
+- `SourceMap`: Only JavaScript based SourceMap symbols (`*.js.map`)
+- `All`: `Pdb` and `SourceMap`
 <!-- :::editable-content-end::: -->
 <br>
 
