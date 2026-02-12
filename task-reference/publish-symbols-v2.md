@@ -209,6 +209,9 @@ Specifies the number of days that symbols should be retained.
 `string`. Optional. Use when `PublishSymbols = true && SymbolServerType = TeamServices`. Allowed values: `Default` (The Default set of symbols to upload), `Pdb` (Only Pdb based symbols Windows pdb's and managed Portable pdb's.), `SourceMap` (Only JavaScript based SourceMap symbols (*.js.map)), `All` (All supported symbol formats). Default value: `Default`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies which debug formats to publish to the symbol server.
+
+- `Default` is `Pdb`
+- `All` is `Pdb` and `SourceMap`
 <!-- :::editable-content-end::: -->
 <br>
 
