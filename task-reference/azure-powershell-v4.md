@@ -1,7 +1,7 @@
 ---
 title: AzurePowerShell@4 - Azure PowerShell v4 task
 description: Run a PowerShell script within an Azure environment (task version 4).
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 author: ramiMSFT
 ms.author: rabououn
@@ -39,7 +39,7 @@ Use this task to run a PowerShell script within an Azure environment. The Azure 
     #RestrictContextToCurrentTask: false # boolean. Restrict scope of context to current task. Default: false.
   # Azure PowerShell version options
     #azurePowerShellVersion: 'OtherVersion' # 'LatestVersion' | 'OtherVersion'. Alias: TargetAzurePs. Azure PowerShell Version. Default: OtherVersion.
-    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when TargetAzurePs = OtherVersion. Preferred Azure PowerShell Version. 
+    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when azurePowerShellVersion = OtherVersion. Preferred Azure PowerShell Version. 
   # Advanced
     #pwsh: false # boolean. Use PowerShell Core. Default: false.
     #validateScriptSignature: false # boolean. Optional. Use when ScriptType = FilePath. Validate script signature. Default: false.
@@ -65,7 +65,7 @@ Use this task to run a PowerShell script within an Azure environment. The Azure 
     #RestrictContextToCurrentTask: false # boolean. Restrict scope of context to current task. Default: false.
   # Azure PowerShell version options
     #azurePowerShellVersion: 'OtherVersion' # 'LatestVersion' | 'OtherVersion'. Alias: TargetAzurePs. Azure PowerShell Version. Default: OtherVersion.
-    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when TargetAzurePs = OtherVersion. Preferred Azure PowerShell Version. 
+    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when azurePowerShellVersion = OtherVersion. Preferred Azure PowerShell Version. 
   # Advanced
     #pwsh: false # boolean. Use PowerShell Core. Default: false.
     #workingDirectory: # string. Working Directory.
@@ -193,7 +193,7 @@ For private agents you can specify a preferred version of Azure PowerShell using
 :::moniker range="<=azure-pipelines"
 
 **`preferredAzurePowerShellVersion`** - **Preferred Azure PowerShell Version**<br>
-[Input alias](index.md#what-are-task-input-aliases): `CustomTargetAzurePs`. `string`. Required when `TargetAzurePs = OtherVersion`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `CustomTargetAzurePs`. `string`. Required when `azurePowerShellVersion = OtherVersion`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The preferred Azure PowerShell Version needs to be a proper semantic version eg. `1.2.3.` Regex like `2.\*,2.3.\*` is not supported. The Hosted VS2017 Pool currently supports Az module version `1.0.0.`
 <!-- :::editable-content-end::: -->

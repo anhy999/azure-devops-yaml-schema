@@ -1,7 +1,7 @@
 ---
 title: DotNetCoreCLI@2 - .NET Core v2 task
 description: Build, test, package, or publish a .NET application, or run a custom .NET CLI command.
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 ---
 
@@ -52,10 +52,10 @@ Build, test, package, or publish a .NET application, or run a custom .NET CLI co
     #requestTimeout: '300000' # string. Set timeout for package download request. Default: 300000.
   # Feeds and authentication
     #feedsToUse: 'select' # 'select' | 'config'. Alias: selectOrConfig. Required when command = restore. Feeds to use. Default: select.
-    #vstsFeed: # string. Alias: feedRestore. Optional. Use when selectOrConfig = select && command = restore. Use packages from this Azure Artifacts feed. Select from the dropdown or enter [project name/]feed name. 
-    #includeNuGetOrg: true # boolean. Optional. Use when selectOrConfig = select && command = restore. Use packages from NuGet.org. Default: true.
-    #nugetConfigPath: # string. Optional. Use when selectOrConfig = config && command = restore. Path to NuGet.config. 
-    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when selectOrConfig = config && command = restore. Credentials for feeds outside this organization/collection. 
+    #vstsFeed: # string. Alias: feedRestore. Optional. Use when feedsToUse = select && command = restore. Use packages from this Azure Artifacts feed. Select from the dropdown or enter [project name/]feed name. 
+    #includeNuGetOrg: true # boolean. Optional. Use when feedsToUse = select && command = restore. Use packages from NuGet.org. Default: true.
+    #nugetConfigPath: # string. Optional. Use when feedsToUse = config && command = restore. Path to NuGet.config. 
+    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when feedsToUse = config && command = restore. Credentials for feeds outside this organization/collection. 
   # Advanced
     #noCache: false # boolean. Optional. Use when command = restore. Disable local cache. Default: false.
     #restoreDirectory: # string. Alias: packagesDirectory. Optional. Use when command = restore. Destination directory. 
@@ -108,10 +108,10 @@ Build, test, package, or publish a .NET application, or run a custom .NET CLI co
     #requestTimeout: '300000' # string. Set timeout for package download request. Default: 300000.
   # Feeds and authentication
     #feedsToUse: 'select' # 'select' | 'config'. Alias: selectOrConfig. Required when command = restore. Feeds to use. Default: select.
-    #vstsFeed: # string. Alias: feedRestore. Optional. Use when selectOrConfig = select && command = restore. Use packages from this Azure Artifacts feed. Select from the dropdown or enter [project name/]feed name. 
-    #includeNuGetOrg: true # boolean. Optional. Use when selectOrConfig = select && command = restore. Use packages from NuGet.org. Default: true.
-    #nugetConfigPath: # string. Optional. Use when selectOrConfig = config && command = restore. Path to NuGet.config. 
-    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when selectOrConfig = config && command = restore. Credentials for feeds outside this organization/collection. 
+    #vstsFeed: # string. Alias: feedRestore. Optional. Use when feedsToUse = select && command = restore. Use packages from this Azure Artifacts feed. Select from the dropdown or enter [project name/]feed name. 
+    #includeNuGetOrg: true # boolean. Optional. Use when feedsToUse = select && command = restore. Use packages from NuGet.org. Default: true.
+    #nugetConfigPath: # string. Optional. Use when feedsToUse = config && command = restore. Path to NuGet.config. 
+    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when feedsToUse = config && command = restore. Credentials for feeds outside this organization/collection. 
   # Advanced
     #noCache: false # boolean. Optional. Use when command = restore. Disable local cache. Default: false.
     #restoreDirectory: # string. Alias: packagesDirectory. Optional. Use when command = restore. Destination directory. 
@@ -162,10 +162,10 @@ Build, test, package, or publish a .NET application, or run a custom .NET CLI co
     #includesource: false # boolean. Optional. Use when command = pack. Include Source. Default: false.
   # Feeds and authentication
     #feedsToUse: 'select' # 'select' | 'config'. Alias: selectOrConfig. Required when command = restore. Feeds to use. Default: select.
-    #vstsFeed: # string. Alias: feedRestore. Optional. Use when selectOrConfig = select && command = restore. Use packages from this Azure Artifacts feed. 
-    #includeNuGetOrg: true # boolean. Optional. Use when selectOrConfig = select && command = restore. Use packages from NuGet.org. Default: true.
-    #nugetConfigPath: # string. Optional. Use when selectOrConfig = config && command = restore. Path to NuGet.config. 
-    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when selectOrConfig = config && command = restore. Credentials for feeds outside this organization/collection. 
+    #vstsFeed: # string. Alias: feedRestore. Optional. Use when feedsToUse = select && command = restore. Use packages from this Azure Artifacts feed. 
+    #includeNuGetOrg: true # boolean. Optional. Use when feedsToUse = select && command = restore. Use packages from NuGet.org. Default: true.
+    #nugetConfigPath: # string. Optional. Use when feedsToUse = config && command = restore. Path to NuGet.config. 
+    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when feedsToUse = config && command = restore. Credentials for feeds outside this organization/collection. 
   # Advanced
     #noCache: false # boolean. Optional. Use when command = restore. Disable local cache. Default: false.
     #restoreDirectory: # string. Alias: packagesDirectory. Optional. Use when command = restore. Destination directory. 
@@ -216,10 +216,10 @@ Build, test, package, or publish a .NET application, or run a custom .NET CLI co
     #includesource: false # boolean. Optional. Use when command = pack. Include Source. Default: false.
   # Feeds and authentication
     #feedsToUse: 'select' # 'select' | 'config'. Alias: selectOrConfig. Required when command = restore. Feeds to use. Default: select.
-    #vstsFeed: # string. Alias: feedRestore. Optional. Use when selectOrConfig = select && command = restore. Use packages from this Azure Artifacts feed. 
-    #includeNuGetOrg: true # boolean. Optional. Use when selectOrConfig = select && command = restore. Use packages from NuGet.org. Default: true.
-    #nugetConfigPath: # string. Optional. Use when selectOrConfig = config && command = restore. Path to NuGet.config. 
-    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when selectOrConfig = config && command = restore. Credentials for feeds outside this organization/collection. 
+    #vstsFeed: # string. Alias: feedRestore. Optional. Use when feedsToUse = select && command = restore. Use packages from this Azure Artifacts feed. 
+    #includeNuGetOrg: true # boolean. Optional. Use when feedsToUse = select && command = restore. Use packages from NuGet.org. Default: true.
+    #nugetConfigPath: # string. Optional. Use when feedsToUse = config && command = restore. Path to NuGet.config. 
+    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when feedsToUse = config && command = restore. Credentials for feeds outside this organization/collection. 
   # Advanced
     #noCache: false # boolean. Optional. Use when command = restore. Disable local cache. Default: false.
     #restoreDirectory: # string. Alias: packagesDirectory. Optional. Use when command = restore. Destination directory. 
@@ -422,7 +422,7 @@ You can either select a feed from Azure Artifacts and/or `NuGet.org` here, or yo
 :::moniker range=">=azure-pipelines-server"
 
 **`vstsFeed`** - **Use packages from this Azure Artifacts feed. Select from the dropdown or enter [project name/]feed name.**<br>
-[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `selectOrConfig = select && command = restore`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `feedsToUse = select && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Includes the selected feed in the generated `NuGet.config`. You must have Package Management installed and licensed to select a feed here. `projectName`/`feedName` are used for project-scoped feeds. Only `FeedName` is used for organization-scoped feeds. Note: This is not supported for the `test` command.
 <!-- :::editable-content-end::: -->
@@ -433,7 +433,7 @@ Includes the selected feed in the generated `NuGet.config`. You must have Packag
 :::moniker range="<=azure-pipelines-2022.2"
 
 **`vstsFeed`** - **Use packages from this Azure Artifacts feed**<br>
-[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `selectOrConfig = select && command = restore`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `feedsToUse = select && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Includes the selected feed in the generated `NuGet.config`. You must have Package Management installed and licensed to select a feed here. `projectName`/`feedName` are used for project-scoped feeds. Only `FeedName` is used for organization-scoped feeds. Note: This is not supported for the test command.
 <!-- :::editable-content-end::: -->
@@ -445,7 +445,7 @@ Includes the selected feed in the generated `NuGet.config`. You must have Packag
 :::moniker range="<=azure-pipelines"
 
 **`includeNuGetOrg`** - **Use packages from NuGet.org**<br>
-`boolean`. Optional. Use when `selectOrConfig = select && command = restore`. Default value: `true`.<br>
+`boolean`. Optional. Use when `feedsToUse = select && command = restore`. Default value: `true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Includes `NuGet.org` in the generated `NuGet.config`.
 <!-- :::editable-content-end::: -->
@@ -457,7 +457,7 @@ Includes `NuGet.org` in the generated `NuGet.config`.
 :::moniker range="<=azure-pipelines"
 
 **`nugetConfigPath`** - **Path to NuGet.config**<br>
-`string`. Optional. Use when `selectOrConfig = config && command = restore`.<br>
+`string`. Optional. Use when `feedsToUse = config && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The `NuGet.config` in your repository that specifies the feeds from which to restore packages.
 <!-- :::editable-content-end::: -->
@@ -469,7 +469,7 @@ The `NuGet.config` in your repository that specifies the feeds from which to res
 :::moniker range="<=azure-pipelines"
 
 **`externalFeedCredentials`** - **Credentials for feeds outside this organization/collection**<br>
-[Input alias](index.md#what-are-task-input-aliases): `externalEndpoints`. `string`. Optional. Use when `selectOrConfig = config && command = restore`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `externalEndpoints`. `string`. Optional. Use when `feedsToUse = config && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The name of the service connection to use for external registries listed in the selected `NuGet.config`. For feeds within the same organization or collection, leave this input blank; the build's credentials are used automatically.
 <!-- :::editable-content-end::: -->

@@ -1,7 +1,7 @@
 ---
 title: Gradle@1 - Gradle v1 task
 description: Build using a Gradle wrapper script (task version 1).
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 ---
 
@@ -33,9 +33,9 @@ Build using a Gradle wrapper script.
   # Advanced
     #workingDirectory: # string. Alias: cwd. Working Directory. 
     javaHomeOption: 'JDKVersion' # 'JDKVersion' | 'Path'. Alias: javaHomeSelection. Required. Set JAVA_HOME by. Default: JDKVersion.
-    #jdkVersionOption: 'default' # 'default' | '1.9' | '1.8' | '1.7' | '1.6'. Alias: jdkVersion. Optional. Use when javaHomeSelection = JDKVersion. JDK Version. Default: default.
-    #jdkDirectory: # string. Alias: jdkUserInputPath. Required when javaHomeSelection = Path. JDK Path. 
-    #jdkArchitectureOption: 'x64' # 'x86' | 'x64'. Alias: jdkArchitecture. Optional. Use when jdkVersion != default. JDK Architecture. Default: x64.
+    #jdkVersionOption: 'default' # 'default' | '1.9' | '1.8' | '1.7' | '1.6'. Alias: jdkVersion. Optional. Use when javaHomeOption = JDKVersion. JDK Version. Default: default.
+    #jdkDirectory: # string. Alias: jdkUserInputPath. Required when javaHomeOption = Path. JDK Path. 
+    #jdkArchitectureOption: 'x64' # 'x86' | 'x64'. Alias: jdkArchitecture. Optional. Use when jdkVersionOption != default. JDK Architecture. Default: x64.
     #gradleOptions: '-Xmx1024m' # string. Alias: gradleOpts. Set GRADLE_OPTS. Default: -Xmx1024m.
   # JUnit Test Results
     #publishJUnitResults: true # boolean. Publish to TFS/Team Services. Default: true.
@@ -43,22 +43,22 @@ Build using a Gradle wrapper script.
     #testRunTitle: # string. Optional. Use when publishJUnitResults = true. Test Run Title. 
   # Code Coverage
     #codeCoverageToolOption: 'None' # 'None' | 'Cobertura' | 'JaCoCo'. Alias: codeCoverageTool. Code Coverage Tool. Default: None.
-    #codeCoverageClassFilesDirectories: 'build/classes/main/' # string. Alias: classFilesDirectories. Required when codeCoverageTool = false. Class Files Directories. Default: build/classes/main/.
-    #codeCoverageClassFilter: # string. Alias: classFilter. Optional. Use when codeCoverageTool != None. Class Inclusion/Exclusion Filters. 
-    #codeCoverageFailIfEmpty: false # boolean. Alias: failIfCoverageEmpty. Optional. Use when codeCoverageTool != None. Fail When Code Coverage Results Are Missing. Default: false.
+    #codeCoverageClassFilesDirectories: 'build/classes/main/' # string. Alias: classFilesDirectories. Required when codeCoverageToolOption = false. Class Files Directories. Default: build/classes/main/.
+    #codeCoverageClassFilter: # string. Alias: classFilter. Optional. Use when codeCoverageToolOption != None. Class Inclusion/Exclusion Filters. 
+    #codeCoverageFailIfEmpty: false # boolean. Alias: failIfCoverageEmpty. Optional. Use when codeCoverageToolOption != None. Fail When Code Coverage Results Are Missing. Default: false.
   # Code Analysis
     #sonarQubeRunAnalysis: false # boolean. Alias: sqAnalysisEnabled. Run SonarQube Analysis. Default: false.
-    #sonarQubeServiceEndpoint: # string. Alias: sqConnectedServiceName. Required when sqAnalysisEnabled = true. SonarQube Endpoint. 
-    #sonarQubeProjectName: # string. Alias: sqProjectName. Required when sqAnalysisEnabled = true. SonarQube Project Name. 
-    #sonarQubeProjectKey: # string. Alias: sqProjectKey. Required when sqAnalysisEnabled = true. SonarQube Project Key. 
-    #sonarQubeProjectVersion: # string. Alias: sqProjectVersion. Required when sqAnalysisEnabled = true. SonarQube Project Version. 
-    #sonarQubeGradlePluginVersion: '2.0.1' # string. Alias: sqGradlePluginVersion. Required when sqAnalysisEnabled = true. SonarQube Gradle Plugin Version. Default: 2.0.1.
-    #sonarQubeSpecifyDB: false # boolean. Alias: sqDbDetailsRequired. Optional. Use when sqAnalysisEnabled = true. The SonarQube server version is lower than 5.2. Default: false.
-    #sonarQubeDBUrl: # string. Alias: sqDbUrl. Optional. Use when sqDbDetailsRequired = true. Db Connection String. 
-    #sonarQubeDBUsername: # string. Alias: sqDbUsername. Optional. Use when sqDbDetailsRequired = true. Db Username. 
-    #sonarQubeDBPassword: # string. Alias: sqDbPassword. Optional. Use when sqDbDetailsRequired = true. Db User Password. 
-    #sonarQubeIncludeFullReport: true # boolean. Alias: sqAnalysisIncludeFullReport. Optional. Use when sqAnalysisEnabled = true. Include full analysis report in the build summary (SQ 5.3+). Default: true.
-    #sonarQubeFailWhenQualityGateFails: # boolean. Alias: sqAnalysisBreakBuildIfQualityGateFailed. Optional. Use when sqAnalysisEnabled = true. Fail the build on quality gate failure (SQ 5.3+). 
+    #sonarQubeServiceEndpoint: # string. Alias: sqConnectedServiceName. Required when sonarQubeRunAnalysis = true. SonarQube Endpoint. 
+    #sonarQubeProjectName: # string. Alias: sqProjectName. Required when sonarQubeRunAnalysis = true. SonarQube Project Name. 
+    #sonarQubeProjectKey: # string. Alias: sqProjectKey. Required when sonarQubeRunAnalysis = true. SonarQube Project Key. 
+    #sonarQubeProjectVersion: # string. Alias: sqProjectVersion. Required when sonarQubeRunAnalysis = true. SonarQube Project Version. 
+    #sonarQubeGradlePluginVersion: '2.0.1' # string. Alias: sqGradlePluginVersion. Required when sonarQubeRunAnalysis = true. SonarQube Gradle Plugin Version. Default: 2.0.1.
+    #sonarQubeSpecifyDB: false # boolean. Alias: sqDbDetailsRequired. Optional. Use when sonarQubeRunAnalysis = true. The SonarQube server version is lower than 5.2. Default: false.
+    #sonarQubeDBUrl: # string. Alias: sqDbUrl. Optional. Use when sonarQubeSpecifyDB = true. Db Connection String. 
+    #sonarQubeDBUsername: # string. Alias: sqDbUsername. Optional. Use when sonarQubeSpecifyDB = true. Db Username. 
+    #sonarQubeDBPassword: # string. Alias: sqDbPassword. Optional. Use when sonarQubeSpecifyDB = true. Db User Password. 
+    #sonarQubeIncludeFullReport: true # boolean. Alias: sqAnalysisIncludeFullReport. Optional. Use when sonarQubeRunAnalysis = true. Include full analysis report in the build summary (SQ 5.3+). Default: true.
+    #sonarQubeFailWhenQualityGateFails: # boolean. Alias: sqAnalysisBreakBuildIfQualityGateFailed. Optional. Use when sonarQubeRunAnalysis = true. Fail the build on quality gate failure (SQ 5.3+). 
     #checkStyleRunAnalysis: false # boolean. Alias: checkstyleAnalysisEnabled. Run Checkstyle. Default: false.
     #findBugsRunAnalysis: false # boolean. Alias: findbugsAnalysisEnabled. Run FindBugs. Default: false.
     #pmdRunAnalysis: false # boolean. Alias: pmdAnalysisEnabled. Run PMD. Default: false.
@@ -173,7 +173,7 @@ Specifies a code coverage tool to determine the code that is covered by the test
 :::moniker range="<=azure-pipelines"
 
 **`codeCoverageClassFilesDirectories`** - **Class Files Directories**<br>
-[Input alias](index.md#what-are-task-input-aliases): `classFilesDirectories`. `string`. Required when `codeCoverageTool = false`. Default value: `build/classes/main/`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `classFilesDirectories`. `string`. Required when `codeCoverageToolOption = false`. Default value: `build/classes/main/`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The comma-separated list of directories containing class files and archive files (.jar, .war, and more). Code coverage is reported for class files in these directories. Normally, the task searches classes under `build/classes/java/main` (for Gradle 4+), which is the default class directory for Gradle builds.
 <!-- :::editable-content-end::: -->
@@ -185,7 +185,7 @@ The comma-separated list of directories containing class files and archive files
 :::moniker range="<=azure-pipelines"
 
 **`codeCoverageClassFilter`** - **Class Inclusion/Exclusion Filters**<br>
-[Input alias](index.md#what-are-task-input-aliases): `classFilter`. `string`. Optional. Use when `codeCoverageTool != None`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `classFilter`. `string`. Optional. Use when `codeCoverageToolOption != None`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The comma-separated list of filters to include or exclude classes from collecting code coverage. For example: `+:com.*`,`+:org.*`,`-:my.app*.*`.
 <!-- :::editable-content-end::: -->
@@ -197,7 +197,7 @@ The comma-separated list of filters to include or exclude classes from collectin
 :::moniker range="<=azure-pipelines"
 
 **`codeCoverageFailIfEmpty`** - **Fail When Code Coverage Results Are Missing**<br>
-[Input alias](index.md#what-are-task-input-aliases): `failIfCoverageEmpty`. `boolean`. Optional. Use when `codeCoverageTool != None`. Default value: `false`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `failIfCoverageEmpty`. `boolean`. Optional. Use when `codeCoverageToolOption != None`. Default value: `false`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Fails the build if code coverage did not produce any results to publish.
 <!-- :::editable-content-end::: -->
@@ -221,7 +221,7 @@ Sets JAVA_HOME by selecting a JDK version that the task discovers during builds 
 :::moniker range="<=azure-pipelines"
 
 **`jdkVersionOption`** - **JDK Version**<br>
-[Input alias](index.md#what-are-task-input-aliases): `jdkVersion`. `string`. Optional. Use when `javaHomeSelection = JDKVersion`. Allowed values: `default`, `1.9` (JDK 9), `1.8` (JDK 8), `1.7` (JDK 7), `1.6` (JDK 6). Default value: `default`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `jdkVersion`. `string`. Optional. Use when `javaHomeOption = JDKVersion`. Allowed values: `default`, `1.9` (JDK 9), `1.8` (JDK 8), `1.7` (JDK 7), `1.6` (JDK 6). Default value: `default`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Attempts to discover the path to the selected JDK version and set JAVA_HOME accordingly.
 <!-- :::editable-content-end::: -->
@@ -233,7 +233,7 @@ Attempts to discover the path to the selected JDK version and set JAVA_HOME acco
 :::moniker range="<=azure-pipelines"
 
 **`jdkDirectory`** - **JDK Path**<br>
-[Input alias](index.md#what-are-task-input-aliases): `jdkUserInputPath`. `string`. Required when `javaHomeSelection = Path`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `jdkUserInputPath`. `string`. Required when `javaHomeOption = Path`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Sets JAVA_HOME to the given path.
 <!-- :::editable-content-end::: -->
@@ -245,7 +245,7 @@ Sets JAVA_HOME to the given path.
 :::moniker range="<=azure-pipelines"
 
 **`jdkArchitectureOption`** - **JDK Architecture**<br>
-[Input alias](index.md#what-are-task-input-aliases): `jdkArchitecture`. `string`. Optional. Use when `jdkVersion != default`. Allowed values: `x86`, `x64`. Default value: `x64`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `jdkArchitecture`. `string`. Optional. Use when `jdkVersionOption != default`. Allowed values: `x86`, `x64`. Default value: `x64`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Supplies the JDK architecture (x86 or x64).
 <!-- :::editable-content-end::: -->
@@ -281,7 +281,7 @@ Runs a SonarQube analysis after executing the current goals. `install` or `packa
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeServiceEndpoint`** - **SonarQube Endpoint**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqConnectedServiceName`. `string`. Required when `sqAnalysisEnabled = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqConnectedServiceName`. `string`. Required when `sonarQubeRunAnalysis = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The endpoint that specifies the SonarQube server to use.
 <!-- :::editable-content-end::: -->
@@ -293,7 +293,7 @@ The endpoint that specifies the SonarQube server to use.
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeProjectName`** - **SonarQube Project Name**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqProjectName`. `string`. Required when `sqAnalysisEnabled = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqProjectName`. `string`. Required when `sonarQubeRunAnalysis = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The SonarQube project name, that is `sonar.projectName`.
 <!-- :::editable-content-end::: -->
@@ -305,7 +305,7 @@ The SonarQube project name, that is `sonar.projectName`.
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeProjectKey`** - **SonarQube Project Key**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqProjectKey`. `string`. Required when `sqAnalysisEnabled = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqProjectKey`. `string`. Required when `sonarQubeRunAnalysis = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The SonarQube project unique key, that is `sonar.projectKey`.
 <!-- :::editable-content-end::: -->
@@ -317,7 +317,7 @@ The SonarQube project unique key, that is `sonar.projectKey`.
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeProjectVersion`** - **SonarQube Project Version**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqProjectVersion`. `string`. Required when `sqAnalysisEnabled = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqProjectVersion`. `string`. Required when `sonarQubeRunAnalysis = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The SonarQube project version, that is `sonar.projectVersion`.
 <!-- :::editable-content-end::: -->
@@ -329,7 +329,7 @@ The SonarQube project version, that is `sonar.projectVersion`.
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeGradlePluginVersion`** - **SonarQube Gradle Plugin Version**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqGradlePluginVersion`. `string`. Required when `sqAnalysisEnabled = true`. Default value: `2.0.1`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqGradlePluginVersion`. `string`. Required when `sonarQubeRunAnalysis = true`. Default value: `2.0.1`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Contains the version number of the [SpotBugs Gradle plugin](https://plugins.gradle.org/plugin/com.github.spotbugs).
 <!-- :::editable-content-end::: -->
@@ -341,7 +341,7 @@ Contains the version number of the [SpotBugs Gradle plugin](https://plugins.grad
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeSpecifyDB`** - **The SonarQube server version is lower than 5.2**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqDbDetailsRequired`. `boolean`. Optional. Use when `sqAnalysisEnabled = true`. Default value: `false`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqDbDetailsRequired`. `boolean`. Optional. Use when `sonarQubeRunAnalysis = true`. Default value: `false`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 SonarQube server 5.1 and lower only. Specifies the database connection details.
 <!-- :::editable-content-end::: -->
@@ -353,7 +353,7 @@ SonarQube server 5.1 and lower only. Specifies the database connection details.
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeDBUrl`** - **Db Connection String**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqDbUrl`. `string`. Optional. Use when `sqDbDetailsRequired = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqDbUrl`. `string`. Optional. Use when `sonarQubeSpecifyDB = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 SonarQube server version 5.1 and lower only. Enters the database connection setting, that is `sonar.jdbc.url`. For example: `jdbc:jtds:sqlserver://localhost/sonar;SelectMethod=Cursor`.
 <!-- :::editable-content-end::: -->
@@ -365,7 +365,7 @@ SonarQube server version 5.1 and lower only. Enters the database connection sett
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeDBUsername`** - **Db Username**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqDbUsername`. `string`. Optional. Use when `sqDbDetailsRequired = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqDbUsername`. `string`. Optional. Use when `sonarQubeSpecifyDB = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 SonarQube server 5.1 and lower only. Enters the username for the database user, that is `sonar.jdbc.username`.
 <!-- :::editable-content-end::: -->
@@ -377,7 +377,7 @@ SonarQube server 5.1 and lower only. Enters the username for the database user, 
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeDBPassword`** - **Db User Password**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqDbPassword`. `string`. Optional. Use when `sqDbDetailsRequired = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqDbPassword`. `string`. Optional. Use when `sonarQubeSpecifyDB = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 SonarQube server 5.1 and lower only. Enter the password for the database user, that is `sonar.jdbc.password`.
 <!-- :::editable-content-end::: -->
@@ -389,7 +389,7 @@ SonarQube server 5.1 and lower only. Enter the password for the database user, t
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeIncludeFullReport`** - **Include full analysis report in the build summary (SQ 5.3+)**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqAnalysisIncludeFullReport`. `boolean`. Optional. Use when `sqAnalysisEnabled = true`. Default value: `true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqAnalysisIncludeFullReport`. `boolean`. Optional. Use when `sonarQubeRunAnalysis = true`. Default value: `true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Delays the build until the SonarQube analysis is completed.
 <!-- :::editable-content-end::: -->
@@ -401,7 +401,7 @@ Delays the build until the SonarQube analysis is completed.
 :::moniker range="<=azure-pipelines"
 
 **`sonarQubeFailWhenQualityGateFails`** - **Fail the build on quality gate failure (SQ 5.3+)**<br>
-[Input alias](index.md#what-are-task-input-aliases): `sqAnalysisBreakBuildIfQualityGateFailed`. `boolean`. Optional. Use when `sqAnalysisEnabled = true`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `sqAnalysisBreakBuildIfQualityGateFailed`. `boolean`. Optional. Use when `sonarQubeRunAnalysis = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 SonarQube server version 5.3 or above only. Introduces delays as the build must wait for SonarQube to complete the analysis. Learn more about [using SonarQube for builds](https://devblogs.microsoft.com/devops/use-sonarqube-quality-gates-to-control-your-visual-studio-team-services-builds/).
 <!-- :::editable-content-end::: -->

@@ -1,7 +1,7 @@
 ---
 title: NuGetCommand@2 - NuGet v2 task
 description: Restore or pack NuGet packages, or run a NuGet command. Supports NuGet.org and authenticated feeds like Azure Artifacts and MyGet. Uses NuGet.exe and works with .NET Framework apps. For .NET Core and .NET Standard apps, use the .NET Core task.
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 author: ramiMSFT
 ms.author: rabououn
@@ -45,10 +45,10 @@ Use this task to pack or restore NuGet packages, or run a NuGet command. This ta
     #arguments: # string. Required when command = custom. Command and arguments. 
   # Feeds and authentication
     feedsToUse: 'select' # 'select' | 'config'. Alias: selectOrConfig. Required when command = restore. Feeds to use. Default: select.
-    #vstsFeed: # string. Alias: feedRestore. Optional. Use when selectOrConfig = select && command = restore. Use packages from this Azure Artifacts/TFS feed. Select from the dropdown or enter [project name/]feed name. 
-    #includeNuGetOrg: true # boolean. Optional. Use when selectOrConfig = select && command = restore. Use packages from NuGet.org. Default: true.
-    #nugetConfigPath: # string. Optional. Use when selectOrConfig = config && command = restore. Path to NuGet.config. 
-    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when selectOrConfig = config && command = restore. Credentials for feeds outside this organization/collection. 
+    #vstsFeed: # string. Alias: feedRestore. Optional. Use when feedsToUse = select && command = restore. Use packages from this Azure Artifacts/TFS feed. Select from the dropdown or enter [project name/]feed name. 
+    #includeNuGetOrg: true # boolean. Optional. Use when feedsToUse = select && command = restore. Use packages from NuGet.org. Default: true.
+    #nugetConfigPath: # string. Optional. Use when feedsToUse = config && command = restore. Path to NuGet.config. 
+    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when feedsToUse = config && command = restore. Credentials for feeds outside this organization/collection. 
   # Advanced
     #noCache: false # boolean. Optional. Use when command = restore. Disable local cache. Default: false.
     #disableParallelProcessing: false # boolean. Optional. Use when command = restore. Disable parallel processing. Default: false.
@@ -96,10 +96,10 @@ Use this task to pack or restore NuGet packages, or run a NuGet command. This ta
     #arguments: # string. Required when command = custom. Command and arguments. 
   # Feeds and authentication
     feedsToUse: 'select' # 'select' | 'config'. Alias: selectOrConfig. Required when command = restore. Feeds to use. Default: select.
-    #vstsFeed: # string. Alias: feedRestore. Optional. Use when selectOrConfig = select && command = restore. Use packages from this Azure Artifacts/TFS feed. Select from the dropdown or enter [project name/]feed name. 
-    #includeNuGetOrg: true # boolean. Optional. Use when selectOrConfig = select && command = restore. Use packages from NuGet.org. Default: true.
-    #nugetConfigPath: # string. Optional. Use when selectOrConfig = config && command = restore. Path to NuGet.config. 
-    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when selectOrConfig = config && command = restore. Credentials for feeds outside this organization/collection. 
+    #vstsFeed: # string. Alias: feedRestore. Optional. Use when feedsToUse = select && command = restore. Use packages from this Azure Artifacts/TFS feed. Select from the dropdown or enter [project name/]feed name. 
+    #includeNuGetOrg: true # boolean. Optional. Use when feedsToUse = select && command = restore. Use packages from NuGet.org. Default: true.
+    #nugetConfigPath: # string. Optional. Use when feedsToUse = config && command = restore. Path to NuGet.config. 
+    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when feedsToUse = config && command = restore. Credentials for feeds outside this organization/collection. 
   # Advanced
     #noCache: false # boolean. Optional. Use when command = restore. Disable local cache. Default: false.
     #disableParallelProcessing: false # boolean. Optional. Use when command = restore. Disable parallel processing. Default: false.
@@ -146,10 +146,10 @@ Use this task to pack or restore NuGet packages, or run a NuGet command. This ta
     #arguments: # string. Required when command = custom. Command and arguments. 
   # Feeds and authentication
     feedsToUse: 'select' # 'select' | 'config'. Alias: selectOrConfig. Required when command = restore. Feeds to use. Default: select.
-    #vstsFeed: # string. Alias: feedRestore. Optional. Use when selectOrConfig = select && command = restore. Use packages from this Azure Artifacts/TFS feed. 
-    #includeNuGetOrg: true # boolean. Optional. Use when selectOrConfig = select && command = restore. Use packages from NuGet.org. Default: true.
-    #nugetConfigPath: # string. Optional. Use when selectOrConfig = config && command = restore. Path to NuGet.config. 
-    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when selectOrConfig = config && command = restore. Credentials for feeds outside this organization/collection. 
+    #vstsFeed: # string. Alias: feedRestore. Optional. Use when feedsToUse = select && command = restore. Use packages from this Azure Artifacts/TFS feed. 
+    #includeNuGetOrg: true # boolean. Optional. Use when feedsToUse = select && command = restore. Use packages from NuGet.org. Default: true.
+    #nugetConfigPath: # string. Optional. Use when feedsToUse = config && command = restore. Path to NuGet.config. 
+    #externalFeedCredentials: # string. Alias: externalEndpoints. Optional. Use when feedsToUse = config && command = restore. Credentials for feeds outside this organization/collection. 
   # Advanced
     #noCache: false # boolean. Optional. Use when command = restore. Disable local cache. Default: false.
     #disableParallelProcessing: false # boolean. Optional. Use when command = restore. Disable parallel processing. Default: false.
@@ -221,7 +221,7 @@ Specifies a feed from Azure Artifacts and/or NuGet.org for the task to use with 
 :::moniker range=">=azure-pipelines-server"
 
 **`vstsFeed`** - **Use packages from this Azure Artifacts/TFS feed. Select from the dropdown or enter [project name/]feed name.**<br>
-[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `selectOrConfig = select && command = restore`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `feedsToUse = select && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the selected feed in the generated `NuGet.config`. You must have Package Management installed and licensed to specify a feed here.
 <!-- :::editable-content-end::: -->
@@ -232,7 +232,7 @@ Specifies the selected feed in the generated `NuGet.config`. You must have Packa
 :::moniker range="<=azure-pipelines-2022.2"
 
 **`vstsFeed`** - **Use packages from this Azure Artifacts/TFS feed**<br>
-[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `selectOrConfig = select && command = restore`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `feedRestore`. `string`. Optional. Use when `feedsToUse = select && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the selected feed in the generated `NuGet.config`. You must have Package Management installed and licensed to specify a feed here.
 <!-- :::editable-content-end::: -->
@@ -244,7 +244,7 @@ Specifies the selected feed in the generated `NuGet.config`. You must have Packa
 :::moniker range="<=azure-pipelines"
 
 **`includeNuGetOrg`** - **Use packages from NuGet.org**<br>
-`boolean`. Optional. Use when `selectOrConfig = select && command = restore`. Default value: `true`.<br>
+`boolean`. Optional. Use when `feedsToUse = select && command = restore`. Default value: `true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Includes NuGet.org in the generated `NuGet.config`.
 <!-- :::editable-content-end::: -->
@@ -256,7 +256,7 @@ Includes NuGet.org in the generated `NuGet.config`.
 :::moniker range="<=azure-pipelines"
 
 **`nugetConfigPath`** - **Path to NuGet.config**<br>
-`string`. Optional. Use when `selectOrConfig = config && command = restore`.<br>
+`string`. Optional. Use when `feedsToUse = config && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the path to the `NuGet.config` in your repository that determines the feeds from which to restore packages.
 <!-- :::editable-content-end::: -->
@@ -268,7 +268,7 @@ Specifies the path to the `NuGet.config` in your repository that determines the 
 :::moniker range="<=azure-pipelines"
 
 **`externalFeedCredentials`** - **Credentials for feeds outside this organization/collection**<br>
-[Input alias](index.md#what-are-task-input-aliases): `externalEndpoints`. `string`. Optional. Use when `selectOrConfig = config && command = restore`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `externalEndpoints`. `string`. Optional. Use when `feedsToUse = config && command = restore`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the credentials to use for external registries located in the selected `NuGet.config`. This is the name of your NuGet service connection. For feeds in this organization or collection, leave this blank; the build's credentials are used automatically.
 <!-- :::editable-content-end::: -->

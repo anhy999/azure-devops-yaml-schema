@@ -1,7 +1,7 @@
 ---
 title: PublishPipelineArtifact@1 - Publish Pipeline Artifacts v1 task
 description: Publish (upload) a file or directory as a named artifact for the current run.
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 ---
 
@@ -41,9 +41,9 @@ Use this task to publish (upload) a file or directory as a named artifact for th
     targetPath: '$(Pipeline.Workspace)' # string. Alias: path. Required. File or directory path. Default: $(Pipeline.Workspace).
     #artifact: # string. Alias: artifactName. Artifact name. 
     publishLocation: 'pipeline' # 'pipeline' | 'filepath'. Alias: artifactType. Required. Artifact publish location. Default: pipeline.
-    #fileSharePath: # string. Required when artifactType = filepath. File share path. 
-    #parallel: false # boolean. Optional. Use when artifactType = filepath. Parallel copy. Default: false.
-    #parallelCount: '8' # string. Optional. Use when artifactType = filepath && parallel = true. Parallel count. Default: 8.
+    #fileSharePath: # string. Required when publishLocation = filepath. File share path. 
+    #parallel: false # boolean. Optional. Use when publishLocation = filepath. Parallel copy. Default: false.
+    #parallelCount: '8' # string. Optional. Use when publishLocation = filepath && parallel = true. Parallel count. Default: 8.
     #properties: # string. Custom properties.
 ```
 
@@ -97,7 +97,7 @@ Specifies whether to store the artifact in Azure Pipelines or to copy it to a fi
 :::moniker range="<=azure-pipelines"
 
 **`fileSharePath`** - **File share path**<br>
-`string`. Required when `artifactType = filepath`.<br>
+`string`. Required when `publishLocation = filepath`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the file share where the artifact files are copied. This can include variables, for example `\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)`. Publishing artifacts from a Linux or macOS agent to a file share is not supported, for example `\\server\folderName`.
 <!-- :::editable-content-end::: -->
@@ -109,7 +109,7 @@ Specifies the file share where the artifact files are copied. This can include v
 :::moniker range="<=azure-pipelines"
 
 **`parallel`** - **Parallel copy**<br>
-`boolean`. Optional. Use when `artifactType = filepath`. Default value: `false`.<br>
+`boolean`. Optional. Use when `publishLocation = filepath`. Default value: `false`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies whether to copy files in parallel using multiple threads for greater potential throughput. If this setting is not enabled, one thread will be used.
 <!-- :::editable-content-end::: -->
@@ -121,7 +121,7 @@ Specifies whether to copy files in parallel using multiple threads for greater p
 :::moniker range="<=azure-pipelines"
 
 **`parallelCount`** - **Parallel count**<br>
-`string`. Optional. Use when `artifactType = filepath && parallel = true`. Default value: `8`.<br>
+`string`. Optional. Use when `publishLocation = filepath && parallel = true`. Default value: `8`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the degree of parallelism, or the number of threads used, to perform the copy. The value must be between 1 and 128.
 <!-- :::editable-content-end::: -->

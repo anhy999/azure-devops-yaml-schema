@@ -1,7 +1,7 @@
 ---
 title: PublishBuildArtifacts@1 - Publish build artifacts v1 task
 description: Publish build artifacts to Azure Pipelines or a Windows file share.
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 ---
 
@@ -41,9 +41,9 @@ Use this task in a build pipeline to publish build artifacts to Azure Pipelines,
     ArtifactName: 'drop' # string. Required. Artifact name. Default: drop.
     publishLocation: 'Container' # 'Container' | 'FilePath'. Alias: ArtifactType. Required. Artifact publish location. Default: Container.
     #MaxArtifactSize: '0' # string. Max Artifact Size. Default: 0.
-    #TargetPath: # string. Required when ArtifactType = FilePath. File share path. 
-    #Parallel: false # boolean. Optional. Use when ArtifactType = FilePath. Parallel copy. Default: false.
-    #ParallelCount: '8' # string. Optional. Use when ArtifactType = FilePath && Parallel = true. Parallel count. Default: 8.
+    #TargetPath: # string. Required when publishLocation = FilePath. File share path. 
+    #Parallel: false # boolean. Optional. Use when publishLocation = FilePath. Parallel copy. Default: false.
+    #ParallelCount: '8' # string. Optional. Use when publishLocation = FilePath && Parallel = true. Parallel count. Default: 8.
   # Advanced
     #StoreAsTar: false # boolean. Tar the artifact before uploading. Default: false.
 ```
@@ -60,11 +60,11 @@ Use this task in a build pipeline to publish build artifacts to Azure Pipelines,
     PathtoPublish: '$(Build.ArtifactStagingDirectory)' # string. Required. Path to publish. Default: $(Build.ArtifactStagingDirectory).
     ArtifactName: 'drop' # string. Required. Artifact name. Default: drop.
     publishLocation: 'Container' # 'Container' | 'FilePath'. Alias: ArtifactType. Required. Artifact publish location. Default: Container.
-    #TargetPath: # string. Required when ArtifactType = FilePath. File share path. 
-    #Parallel: false # boolean. Optional. Use when ArtifactType = FilePath. Parallel copy. Default: false.
-    #ParallelCount: '8' # string. Optional. Use when ArtifactType = FilePath && Parallel = true. Parallel count. Default: 8.
+    #TargetPath: # string. Required when publishLocation = FilePath. File share path. 
+    #Parallel: false # boolean. Optional. Use when publishLocation = FilePath. Parallel copy. Default: false.
+    #ParallelCount: '8' # string. Optional. Use when publishLocation = FilePath && Parallel = true. Parallel count. Default: 8.
   # Advanced
-    #FileCopyOptions: # string. Optional. Use when ArtifactType = FilePath. File copy options. 
+    #FileCopyOptions: # string. Optional. Use when publishLocation = FilePath. File copy options. 
     #StoreAsTar: false # boolean. Tar the artifact before uploading. Default: false.
 ```
 
@@ -127,7 +127,7 @@ Maximum limit on the size of artifacts to be published in bytes. Put 0 if you do
 :::moniker range="<=azure-pipelines"
 
 **`TargetPath`** - **File share path**<br>
-`string`. Required when `ArtifactType = FilePath`.<br>
+`string`. Required when `publishLocation = FilePath`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the path to the file share where you want to copy the files. The path must be a fully qualified path or a valid path relative to the root directory of your repository. Publishing artifacts from a Linux or macOS agent to a file share is not supported. Example: `\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)`.
 <!-- :::editable-content-end::: -->
@@ -139,7 +139,7 @@ Specifies the path to the file share where you want to copy the files. The path 
 :::moniker range="<=azure-pipelines"
 
 **`Parallel`** - **Parallel copy**<br>
-`boolean`. Optional. Use when `ArtifactType = FilePath`. Default value: `false`.<br>
+`boolean`. Optional. Use when `publishLocation = FilePath`. Default value: `false`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies whether to copy files in parallel using multiple threads for greater potential throughput. If this setting is not enabled, a single thread will be used.
 <!-- :::editable-content-end::: -->
@@ -151,7 +151,7 @@ Specifies whether to copy files in parallel using multiple threads for greater p
 :::moniker range="<=azure-pipelines"
 
 **`ParallelCount`** - **Parallel count**<br>
-`string`. Optional. Use when `ArtifactType = FilePath && Parallel = true`. Default value: `8`.<br>
+`string`. Optional. Use when `publishLocation = FilePath && Parallel = true`. Default value: `8`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the degree of parallelism (the number of threads) used to perform the copy. The value must be at least 1 and not greater than 128. Choose a value based on CPU capabilities of the build agent.
 <!-- :::editable-content-end::: -->
@@ -175,7 +175,7 @@ Adds all files from the publish path to a tar archive before uploading. This all
 :::moniker range="=azure-pipelines-2022"
 
 **`FileCopyOptions`** - **File copy options**<br>
-`string`. Optional. Use when `ArtifactType = FilePath`.<br>
+`string`. Optional. Use when `publishLocation = FilePath`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Passes additional options to the Robocopy command. For example, the recursive minimatch pattern `**/*`.
 <!-- :::editable-content-end::: -->

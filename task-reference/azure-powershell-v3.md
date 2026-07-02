@@ -1,7 +1,7 @@
 ---
 title: AzurePowerShell@3 - Azure PowerShell v3 task
 description: Run a PowerShell script within an Azure environment (task version 3).
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 author: ramiMSFT
 ms.author: rabououn
@@ -42,8 +42,8 @@ Use this task to run a PowerShell script within an Azure environment. The Azure 
 - task: AzurePowerShell@3
   inputs:
     #azureConnectionType: 'ConnectedServiceNameARM' # 'ConnectedServiceName' | 'ConnectedServiceNameARM'. Alias: ConnectedServiceNameSelector. Azure Connection Type. Default: ConnectedServiceNameARM.
-    #azureClassicSubscription: # string. Alias: ConnectedServiceName. Required when ConnectedServiceNameSelector = ConnectedServiceName. Azure Classic Subscription. 
-    azureSubscription: # string. Alias: ConnectedServiceNameARM. Required when ConnectedServiceNameSelector = ConnectedServiceNameARM. Azure Subscription. 
+    #azureClassicSubscription: # string. Alias: ConnectedServiceName. Required when azureConnectionType = ConnectedServiceName. Azure Classic Subscription. 
+    azureSubscription: # string. Alias: ConnectedServiceNameARM. Required when azureConnectionType = ConnectedServiceNameARM. Azure Subscription. 
     #ScriptType: 'FilePath' # 'FilePath' | 'InlineScript'. Script Type. Default: FilePath.
     #ScriptPath: # string. Optional. Use when ScriptType = FilePath. Script Path. 
     #Inline: # string. Optional. Use when ScriptType = InlineScript. Inline Script. 
@@ -52,7 +52,7 @@ Use this task to run a PowerShell script within an Azure environment. The Azure 
     #FailOnStandardError: false # boolean. Fail on Standard Error. Default: false.
   # Azure PowerShell version options
     #azurePowerShellVersion: 'OtherVersion' # 'LatestVersion' | 'OtherVersion'. Alias: TargetAzurePs. Azure PowerShell Version. Default: OtherVersion.
-    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when TargetAzurePs = OtherVersion. Preferred Azure PowerShell Version. 
+    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when azurePowerShellVersion = OtherVersion. Preferred Azure PowerShell Version. 
   # Advanced
     #validateScriptSignature: false # boolean. Optional. Use when ScriptType = FilePath. Validate script signature. Default: false.
 ```
@@ -67,8 +67,8 @@ Use this task to run a PowerShell script within an Azure environment. The Azure 
 - task: AzurePowerShell@3
   inputs:
     #azureConnectionType: 'ConnectedServiceNameARM' # 'ConnectedServiceName' | 'ConnectedServiceNameARM'. Alias: ConnectedServiceNameSelector. Azure Connection Type. Default: ConnectedServiceNameARM.
-    #azureClassicSubscription: # string. Alias: ConnectedServiceName. Required when ConnectedServiceNameSelector = ConnectedServiceName. Azure Classic Subscription. 
-    azureSubscription: # string. Alias: ConnectedServiceNameARM. Required when ConnectedServiceNameSelector = ConnectedServiceNameARM. Azure Subscription. 
+    #azureClassicSubscription: # string. Alias: ConnectedServiceName. Required when azureConnectionType = ConnectedServiceName. Azure Classic Subscription. 
+    azureSubscription: # string. Alias: ConnectedServiceNameARM. Required when azureConnectionType = ConnectedServiceNameARM. Azure Subscription. 
     #ScriptType: 'FilePath' # 'FilePath' | 'InlineScript'. Script Type. Default: FilePath.
     #ScriptPath: # string. Optional. Use when ScriptType = FilePath. Script Path. 
     #Inline: # string. Optional. Use when ScriptType = InlineScript. Inline Script. 
@@ -77,7 +77,7 @@ Use this task to run a PowerShell script within an Azure environment. The Azure 
     #FailOnStandardError: false # boolean. Fail on Standard Error. Default: false.
   # Azure PowerShell version options
     #azurePowerShellVersion: 'OtherVersion' # 'LatestVersion' | 'OtherVersion'. Alias: TargetAzurePs. Azure PowerShell Version. Default: OtherVersion.
-    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when TargetAzurePs = OtherVersion. Preferred Azure PowerShell Version.
+    preferredAzurePowerShellVersion: # string. Alias: CustomTargetAzurePs. Required when azurePowerShellVersion = OtherVersion. Preferred Azure PowerShell Version.
 ```
 
 :::moniker-end
@@ -101,7 +101,7 @@ Use this task to run a PowerShell script within an Azure environment. The Azure 
 :::moniker range="<=azure-pipelines"
 
 **`azureClassicSubscription`** - **Azure Classic Subscription**<br>
-[Input alias](index.md#what-are-task-input-aliases): `ConnectedServiceName`. `string`. Required when `ConnectedServiceNameSelector = ConnectedServiceName`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `ConnectedServiceName`. `string`. Required when `azureConnectionType = ConnectedServiceName`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The Azure Classic subscription to configure before running PowerShell.
 <!-- :::editable-content-end::: -->
@@ -113,7 +113,7 @@ The Azure Classic subscription to configure before running PowerShell.
 :::moniker range="<=azure-pipelines"
 
 **`azureSubscription`** - **Azure Subscription**<br>
-[Input alias](index.md#what-are-task-input-aliases): `ConnectedServiceNameARM`. `string`. Required when `ConnectedServiceNameSelector = ConnectedServiceNameARM`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `ConnectedServiceNameARM`. `string`. Required when `azureConnectionType = ConnectedServiceNameARM`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The Azure Resource Manager subscription to configure before running PowerShell.
 <!-- :::editable-content-end::: -->
@@ -212,7 +212,7 @@ For private agents, you can specify a preferred version of Azure PowerShell usin
 :::moniker range="<=azure-pipelines"
 
 **`preferredAzurePowerShellVersion`** - **Preferred Azure PowerShell Version**<br>
-[Input alias](index.md#what-are-task-input-aliases): `CustomTargetAzurePs`. `string`. Required when `TargetAzurePs = OtherVersion`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `CustomTargetAzurePs`. `string`. Required when `azurePowerShellVersion = OtherVersion`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The preferred Azure PowerShell Version needs to be a proper semantic version eg. `1.2.3.`. Regex like `2.\*,2.3.\*` is not supported. Hosted agents currently supports Azure module versions `2.1.0`, `3.8.0`, `4.2.1`, `5.1.1` and AzureRM module versions `2.1.0`, `3.8.0`, `4.2.1`, `5.1.1`, `6.7.0`.
 <!-- :::editable-content-end::: -->

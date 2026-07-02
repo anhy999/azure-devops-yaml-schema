@@ -1,7 +1,7 @@
 ---
 title: AzureAppServiceManage@0 - Azure App Service manage v0 task
 description: Start, stop, restart, slot swap, slot delete, install site extensions or enable continuous monitoring for an Azure App Service.
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 author: ramiMSFT
 ms.author: rabououn
@@ -34,12 +34,12 @@ Start, stop, restart, slot swap, slot delete, install site extensions, or enable
     #Action: 'Swap Slots' # 'Swap Slots' | 'Start Azure App Service' | 'Stop Azure App Service' | 'Restart Azure App Service' | 'Start Swap With Preview' | 'Complete Swap' | 'Cancel Swap' | 'Delete Slot' | 'Install Extensions' | 'Enable Continuous Monitoring' | 'Start all continuous webjobs' | 'Stop all continuous webjobs'. Action. Default: Swap Slots.
     WebAppName: # string. Required. App Service name. 
     #SpecifySlotOrASE: false # boolean. Alias: SpecifySlot. Optional. Use when Action != Swap Slots && Action != Delete Slot && Action != Start Swap With Preview && Action != Complete Swap && Action != Cancel Swap. Specify Slot or App Service Environment. Default: false.
-    #ResourceGroupName: # string. Required when Action = Swap Slots || Action = Delete Slot || SpecifySlot = true || Action = Start Swap With Preview || Action = Complete Swap || Action = Cancel Swap. Resource group. 
+    #ResourceGroupName: # string. Required when Action = Swap Slots || Action = Delete Slot || SpecifySlotOrASE = true || Action = Start Swap With Preview || Action = Complete Swap || Action = Cancel Swap. Resource group. 
     #SourceSlot: # string. Required when Action = Swap Slots || Action = Start Swap With Preview  || Action = Complete Swap. Source Slot. 
     #SwapWithProduction: true # boolean. Optional. Use when Action = Swap Slots || Action = Start Swap With Preview  || Action = Complete Swap. Swap with Production. Default: true.
     #TargetSlot: # string. Required when SwapWithProduction = false. Target Slot. 
     #PreserveVnet: false # boolean. Optional. Use when Action = Swap Slots || Action = Start Swap With Preview || Action = Complete Swap. Preserve Vnet. Default: false.
-    #Slot: 'production' # string. Required when Action = Delete Slot || Action = Cancel Swap || SpecifySlot = true. Slot. Default: production.
+    #Slot: 'production' # string. Required when Action = Delete Slot || Action = Cancel Swap || SpecifySlotOrASE = true. Slot. Default: production.
     #ExtensionsList: # string. Required when Action = Install Extensions. Install Extensions. 
     #OutputVariable: # string. Optional. Use when Action = Install Extensions. Output variable. 
     #AppInsightsResourceGroupName: # string. Required when Action == Enable Continuous Monitoring. Resource Group name for Application Insights. 
@@ -106,7 +106,7 @@ Enters or selects the name of an existing Azure App Service.
 :::moniker range="<=azure-pipelines"
 
 **`ResourceGroupName`** - **Resource group**<br>
-`string`. Required when `Action = Swap Slots || Action = Delete Slot || SpecifySlot = true || Action = Start Swap With Preview || Action = Complete Swap || Action = Cancel Swap`.<br>
+`string`. Required when `Action = Swap Slots || Action = Delete Slot || SpecifySlotOrASE = true || Action = Start Swap With Preview || Action = Complete Swap || Action = Cancel Swap`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Enters or selects the Azure Resource Group that contains the Azure App Service specified above.
 <!-- :::editable-content-end::: -->
@@ -166,7 +166,7 @@ Preserves the virtual network settings.
 :::moniker range="<=azure-pipelines"
 
 **`Slot`** - **Slot**<br>
-`string`. Required when `Action = Delete Slot || Action = Cancel Swap || SpecifySlot = true`. Default value: `production`.<br>
+`string`. Required when `Action = Delete Slot || Action = Cancel Swap || SpecifySlotOrASE = true`. Default value: `production`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 <!-- :::editable-content-end::: -->
 <br>
