@@ -1,7 +1,7 @@
 ---
 title: FtpUpload@2 - FTP upload v2 task
 description: Upload files using FTP.
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 ---
 
@@ -28,10 +28,10 @@ Use this task to upload files to a remote machine using FTP or securely with FTP
 - task: FtpUpload@2
   inputs:
     credentialsOption: 'serviceEndpoint' # 'serviceEndpoint' | 'inputs'. Alias: credsType. Required. Authentication Method. Default: serviceEndpoint.
-    serverEndpoint: # string. Required when credsType = serviceEndpoint. FTP Service Connection. 
-    #serverUrl: # string. Required when credsType = inputs. Server URL. 
-    #username: # string. Required when credsType = inputs. Username. 
-    #password: # string. Required when credsType = inputs. Password. 
+    serverEndpoint: # string. Required when credentialsOption = serviceEndpoint. FTP Service Connection. 
+    #serverUrl: # string. Required when credentialsOption = inputs. Server URL. 
+    #username: # string. Required when credentialsOption = inputs. Username. 
+    #password: # string. Required when credentialsOption = inputs. Password. 
     #implicitFTPS: false # boolean. Use implicit FTPS. Default: false.
     rootDirectory: # string. Alias: rootFolder. Required. Root folder. 
     filePatterns: '**' # string. Required. File patterns. Default: **.
@@ -55,10 +55,10 @@ Use this task to upload files to a remote machine using FTP or securely with FTP
 - task: FtpUpload@2
   inputs:
     credentialsOption: 'serviceEndpoint' # 'serviceEndpoint' | 'inputs'. Alias: credsType. Required. Authentication Method. Default: serviceEndpoint.
-    serverEndpoint: # string. Required when credsType = serviceEndpoint. FTP Service Connection. 
-    #serverUrl: # string. Required when credsType = inputs. Server URL. 
-    #username: # string. Required when credsType = inputs. Username. 
-    #password: # string. Required when credsType = inputs. Password. 
+    serverEndpoint: # string. Required when credentialsOption = serviceEndpoint. FTP Service Connection. 
+    #serverUrl: # string. Required when credentialsOption = inputs. Server URL. 
+    #username: # string. Required when credentialsOption = inputs. Username. 
+    #password: # string. Required when credentialsOption = inputs. Password. 
     rootDirectory: # string. Alias: rootFolder. Required. Root folder. 
     filePatterns: '**' # string. Required. File patterns. Default: **.
     remoteDirectory: '/upload/$(Build.BuildId)/' # string. Alias: remotePath. Required. Remote directory. Default: /upload/$(Build.BuildId)/.
@@ -94,7 +94,7 @@ Specifies the authentication method. Use an FTP service connection or enter the 
 :::moniker range="<=azure-pipelines"
 
 **`serverEndpoint`** - **FTP Service Connection**<br>
-`string`. Required when `credsType = serviceEndpoint`.<br>
+`string`. Required when `credentialsOption = serviceEndpoint`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the service connection for the FTP server. To create one, click the Manage link and create a new generic service connection, and then enter the FTP server URL for the server URL, e.g. `ftp://server.example.com`, and the required credentials.
 
@@ -108,7 +108,7 @@ Secure connections will always be made regardless of the specified protocol (`ft
 :::moniker range="<=azure-pipelines"
 
 **`serverUrl`** - **Server URL**<br>
-`string`. Required when `credsType = inputs`.<br>
+`string`. Required when `credentialsOption = inputs`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the URL for the FTP server.
 <!-- :::editable-content-end::: -->
@@ -120,7 +120,7 @@ Specifies the URL for the FTP server.
 :::moniker range="<=azure-pipelines"
 
 **`username`** - **Username**<br>
-`string`. Required when `credsType = inputs`.<br>
+`string`. Required when `credentialsOption = inputs`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the user name for the FTP connection.
 <!-- :::editable-content-end::: -->
@@ -132,7 +132,7 @@ Specifies the user name for the FTP connection.
 :::moniker range="<=azure-pipelines"
 
 **`password`** - **Password**<br>
-`string`. Required when `credsType = inputs`.<br>
+`string`. Required when `credentialsOption = inputs`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the password for the FTP connection.
 <!-- :::editable-content-end::: -->

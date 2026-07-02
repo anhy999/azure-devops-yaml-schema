@@ -81,6 +81,8 @@ Contributions cannot be made to any article text that is outside of an `editable
 
 The `ms.date` in the front matter article metadata should reflect the date of the last meaningful content change. It is acceptable to update the `ms.date` value even though it is not in an `editable-content` section.
 
+When the automated tooling runs, it verifies the structure of every article, and if directed, updates the `ms.date` value for every verified article to the current date. Pull requests made by the automated tooling have the PR label `task-automation`. These pull requests may make edits outside of an `editable-content` tag, and may change the `ms.date` even if the article has no other changes.
+
 To file issues with the tasks themselves, submit feedback to [the Azure Pipeline tasks open source repository](https://github.com/microsoft/azure-pipelines-tasks/tree/master/Tasks).
 
 ## Creating documentation for a new task
@@ -147,3 +149,4 @@ Article sections that do not combine auto-generated content with editable conten
 
 Contributions cannot be made to any article text that is outside of an `editable-content` tag. Pull requests (other than by the automated tooling that generates and updates the articles) that contain edits outside of an `editable-content` tag can't be merged and will be closed. Pull requests that contain new definition articles can't be merged and will be closed. New definition articles are created automatically when the Azure DevOps sprint containing the new definition is deployed.
 
+When the automated tooling runs, it verifies the structure of every article, and if directed, updates the `ms.date` value for every verified article to the current date. Pull requests made by the automated tooling have the PR label `yaml-schema-automation`. These pull requests may make edits outside of an `editable-content` tag, and may change the `ms.date` even if the article has no other changes.

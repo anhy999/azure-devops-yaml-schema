@@ -1,7 +1,7 @@
 ---
 title: JenkinsQueueJob@2 - Jenkins queue job v2 task
 description: Queue a job on a Jenkins server.
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 author: ramiMSFT
 ms.author: rabououn
@@ -37,7 +37,7 @@ Use this task to queue a job on a Jenkins server.
     #capturePipeline: true # boolean. Optional. Use when captureConsole = true. Capture pipeline output and wait for pipeline completion. Default: true.
   # Advanced
     #isParameterizedJob: false # boolean. Alias: parameterizedJob. Parameterized job. Default: false.
-    #jobParameters: # string. Optional. Use when parameterizedJob = true. Job parameters. 
+    #jobParameters: # string. Optional. Use when isParameterizedJob = true. Job parameters. 
     #failOnUnstableResult: false # boolean. Fail on unstable result. Default: false.
     #retryCount: '3' # string. Number of retries for failed connection. Default: 3.
     #delayBetweenRetries: '60' # string. Time between retries. Default: 60.
@@ -138,7 +138,7 @@ Specifies if the Jenkins job accepts parameters. Use this input even if all defa
 :::moniker range="<=azure-pipelines"
 
 **`jobParameters`** - **Job parameters**<br>
-`string`. Optional. Use when `parameterizedJob = true`.<br>
+`string`. Optional. Use when `isParameterizedJob = true`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies job parameters, with one per line, in the format of `<parameterName>=<parameterValue>`. 
 

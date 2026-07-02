@@ -1,7 +1,7 @@
 ---
 title: AppCenterDistribute@0 - App Center Distribute v0 task
 description: Distribute app builds to testers and users via App Center (task version 1).
-ms.date: 06/30/2026
+ms.date: 07/02/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 author: ramiMSFT
 ms.author: rabououn
@@ -36,15 +36,15 @@ Use this task to distribute app builds to testers and users via App Center.
     appSlug: # string. Required. App slug. 
     appFile: # string. Alias: app. Required. Binary file path. 
     releaseNotesOption: 'input' # 'input' | 'file'. Alias: releaseNotesSelection. Required. Create release notes. Default: input.
-    releaseNotesInput: # string. Required when releaseNotesSelection = input. Release notes. 
-    #releaseNotesFile: # string. Required when releaseNotesSelection = file. Release notes file. 
+    releaseNotesInput: # string. Required when releaseNotesOption = input. Release notes. 
+    #releaseNotesFile: # string. Required when releaseNotesOption = file. Release notes file. 
     #distributionGroupId: # string. Distribution group ID. 
   # Symbols
     #symbolsOption: 'Apple' # 'Apple'. Alias: symbolsType. Symbols type. Default: Apple.
-    #symbolsPath: # string. Optional. Use when symbolsType == AndroidNative || symbolsType = Windows. Symbols path. 
-    #symbolsPdbFiles: '**/*.pdb' # string. Alias: pdbPath. Optional. Use when symbolsType = UWP. Symbols path (*.pdb). Default: **/*.pdb.
-    #symbolsDsymFiles: # string. Alias: dsymPath. Optional. Use when symbolsType = Apple. dSYM path. 
-    #symbolsMappingTxtFile: # string. Alias: mappingTxtPath. Optional. Use when symbolsType = AndroidJava. Mapping file. 
+    #symbolsPath: # string. Optional. Use when symbolsOption == AndroidNative || symbolsOption = Windows. Symbols path. 
+    #symbolsPdbFiles: '**/*.pdb' # string. Alias: pdbPath. Optional. Use when symbolsOption = UWP. Symbols path (*.pdb). Default: **/*.pdb.
+    #symbolsDsymFiles: # string. Alias: dsymPath. Optional. Use when symbolsOption = Apple. dSYM path. 
+    #symbolsMappingTxtFile: # string. Alias: mappingTxtPath. Optional. Use when symbolsOption = AndroidJava. Mapping file. 
     #symbolsIncludeParentDirectory: # boolean. Alias: packParentFolder. Include all items in parent folder.
 ```
 
@@ -107,7 +107,7 @@ Includes symbol files to receive symbolicated stack traces in App Center Diagnos
 :::moniker range="<=azure-pipelines"
 
 **`symbolsPath`** - **Symbols path**<br>
-`string`. Optional. Use when `symbolsType == AndroidNative || symbolsType = Windows`.<br>
+`string`. Optional. Use when `symbolsOption == AndroidNative || symbolsOption = Windows`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The relative path from the repo root to the symbols folder.
 <!-- :::editable-content-end::: -->
@@ -119,7 +119,7 @@ The relative path from the repo root to the symbols folder.
 :::moniker range="<=azure-pipelines"
 
 **`symbolsPdbFiles`** - **Symbols path (*.pdb)**<br>
-[Input alias](index.md#what-are-task-input-aliases): `pdbPath`. `string`. Optional. Use when `symbolsType = UWP`. Default value: `**/*.pdb`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `pdbPath`. `string`. Optional. Use when `symbolsOption = UWP`. Default value: `**/*.pdb`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The relative path from the repo root to `.pdb` symbols files. Path may contain [wildcards](/azure/devops/pipelines/tasks/file-matching-patterns).
 <!-- :::editable-content-end::: -->
@@ -131,7 +131,7 @@ The relative path from the repo root to `.pdb` symbols files. Path may contain [
 :::moniker range="<=azure-pipelines"
 
 **`symbolsDsymFiles`** - **dSYM path**<br>
-[Input alias](index.md#what-are-task-input-aliases): `dsymPath`. `string`. Optional. Use when `symbolsType = Apple`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `dsymPath`. `string`. Optional. Use when `symbolsOption = Apple`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The relative path from the repo root to the dSYM folder. Path may contain [wildcards](/azure/devops/pipelines/tasks/file-matching-patterns).
 <!-- :::editable-content-end::: -->
@@ -143,7 +143,7 @@ The relative path from the repo root to the dSYM folder. Path may contain [wildc
 :::moniker range="<=azure-pipelines"
 
 **`symbolsMappingTxtFile`** - **Mapping file**<br>
-[Input alias](index.md#what-are-task-input-aliases): `mappingTxtPath`. `string`. Optional. Use when `symbolsType = AndroidJava`.<br>
+[Input alias](index.md#what-are-task-input-aliases): `mappingTxtPath`. `string`. Optional. Use when `symbolsOption = AndroidJava`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The relative path from the repo root to Android's `mapping.txt` file.
 <!-- :::editable-content-end::: -->
@@ -179,7 +179,7 @@ The release notes will be attached to the release and shown to testers on the in
 :::moniker range="<=azure-pipelines"
 
 **`releaseNotesInput`** - **Release notes**<br>
-`string`. Required when `releaseNotesSelection = input`.<br>
+`string`. Required when `releaseNotesOption = input`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 The release notes for this version.
 <!-- :::editable-content-end::: -->
@@ -191,7 +191,7 @@ The release notes for this version.
 :::moniker range="<=azure-pipelines"
 
 **`releaseNotesFile`** - **Release notes file**<br>
-`string`. Required when `releaseNotesSelection = file`.<br>
+`string`. Required when `releaseNotesOption = file`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Selects a UTF-8 encoded text file which contains the release notes for this version.
 <!-- :::editable-content-end::: -->
