@@ -589,6 +589,11 @@ items:
   - name: Gradle@1
     href: gradle-v1.md
     displayName: Gradle v1
+- name: Gradle Authenticate
+  items:
+  - name: GradleAuthenticate@0
+    href: gradle-authenticate-v0.md
+    displayName: Gradle Authenticate v0
 - name: Grunt
   items:
   - name: Grunt@0

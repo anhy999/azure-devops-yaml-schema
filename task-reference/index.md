@@ -124,6 +124,7 @@ For how-tos and tutorials about authoring pipelines using tasks, including creat
 | **CocoaPods**<br>[CocoaPods@0](cocoa-pods-v0.md) | Install CocoaPods dependencies for Swift and Objective-C Cocoa projects. |
 | **Conda environment**<br>[CondaEnvironment@1](conda-environment-v1.md)<br>[CondaEnvironment@0](conda-environment-v0.md) | This task is deprecated. Use `conda` directly in script to work with Anaconda environments. |
 | **Download Github Npm Package**<br>[DownloadGithubNpmPackage@1](download-github-npm-package-v1.md) | Deprecated: this task is no longer maintained. Use the Npm@1 task with GitHub service connections instead. |
+| **Gradle Authenticate**<br>[GradleAuthenticate@0](gradle-authenticate-v0.md) | Authenticate Gradle builds with Azure Artifacts feeds using Workload Identity Federation or an access token. |
 | **Maven Authenticate**<br>[MavenAuthenticate@0](maven-authenticate-v0.md) | Provides credentials for Azure Artifacts feeds and external maven repositories. |
 | **npm**<br>[Npm@1](npm-v1.md)<br>[Npm@0](npm-v0.md) | Install and publish npm packages, or run an npm command. Supports npmjs.com and authenticated registries like Azure Artifacts. |
 | **npm authenticate (for task runners)**<br>[npmAuthenticate@0](npm-authenticate-v0.md) | Don't use this task if you're also using the npm task. Provides npm credentials to an .npmrc file in your repository for the scope of the build. This enables npm task runners like gulp and Grunt to authenticate with private registries. |
