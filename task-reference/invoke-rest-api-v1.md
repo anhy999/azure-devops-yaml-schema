@@ -1,7 +1,7 @@
 ---
 title: InvokeRESTAPI@1 - Invoke REST API v1 task
 description: Invoke a REST API as a part of your pipeline.
-ms.date: 07/02/2026
+ms.date: 07/20/2026
 monikerRange: "=azure-pipelines || =azure-pipelines-server || =azure-pipelines-2022.2 || =azure-pipelines-2022.1 || =azure-pipelines-2022"
 ---
 
@@ -20,7 +20,29 @@ Use this task to invoke a REST API as a part of your pipeline.
 <!-- :::syntax::: -->
 ## Syntax
 
-:::moniker range="<=azure-pipelines"
+:::moniker range="=azure-pipelines"
+
+```yaml
+# Invoke REST API v1
+# Invoke a REST API as a part of your pipeline.
+- task: InvokeRESTAPI@1
+  inputs:
+    connectionType: 'connectedServiceName' # 'connectedServiceName' | 'connectedServiceNameARM' | 'connectedServiceNameAzureDevOps'. Alias: connectedServiceNameSelector. Required. Connection type. Default: connectedServiceName.
+    serviceConnection: # string. Alias: connectedServiceName | genericService. Required when connectionType = connectedServiceName. Generic service connection. 
+    #azureServiceConnection: # string. Alias: connectedServiceNameARM | azureSubscription. Required when connectionType = connectedServiceNameARM. Azure subscription. 
+    #azureDevOpsServiceConnection: # string. Alias: connectedServiceNameAzureDevOps. Required when connectionType = connectedServiceNameAzureDevOps. Azure DevOps service connection. 
+    method: 'POST' # 'OPTIONS' | 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'PATCH'. Required. Method. Default: POST.
+    #headers: # string. Headers. 
+    #body: # string. Optional. Use when method != GET && method != HEAD. Body. 
+    #urlSuffix: # string. URL suffix and parameters. 
+  # Advanced
+    waitForCompletion: 'false' # 'true' | 'false'. Required. Completion event. Default: false.
+    #successCriteria: # string. Optional. Use when waitForCompletion = false. Success criteria.
+```
+
+:::moniker-end
+
+:::moniker range="<=azure-pipelines-server"
 
 ```yaml
 # Invoke REST API v1
@@ -47,7 +69,18 @@ Use this task to invoke a REST API as a part of your pipeline.
 ## Inputs
 
 <!-- :::item name="connectionType"::: -->
-:::moniker range="<=azure-pipelines"
+:::moniker range=">azure-pipelines-server"
+
+**`connectionType`** - **Connection type**<br>
+[Input alias](index.md#what-are-task-input-aliases): `connectedServiceNameSelector`. `string`. Required. Allowed values: `connectedServiceName` (Generic), `connectedServiceNameARM` (Azure Resource Manager), `connectedServiceNameAzureDevOps` (Azure DevOps). Default value: `connectedServiceName`.<br>
+<!-- :::editable-content name="helpMarkDown"::: -->
+Specifies the service connection type to use to invoke the REST API. Select **Azure Resource Manager** to invoke an Azure management API, **Azure DevOps** to invoke an Azure DevOps API, or **Generic** for all other APIs.
+<!-- :::editable-content-end::: -->
+<br>
+
+:::moniker-end
+
+:::moniker range="<=azure-pipelines-server"
 
 **`connectionType`** - **Connection type**<br>
 [Input alias](index.md#what-are-task-input-aliases): `connectedServiceNameSelector`. `string`. Required. Allowed values: `connectedServiceName` (Generic), `connectedServiceNameARM` (Azure Resource Manager). Default value: `connectedServiceName`.<br>
@@ -77,6 +110,18 @@ Specifies the generic service connection that provides the baseUrl for the call 
 [Input alias](index.md#what-are-task-input-aliases): `connectedServiceNameARM | azureSubscription`. `string`. Required when `connectionType = connectedServiceNameARM`.<br>
 <!-- :::editable-content name="helpMarkDown"::: -->
 Specifies the Azure Resource Manager subscription to configure and use for invoking Azure management APIs.
+<!-- :::editable-content-end::: -->
+<br>
+
+:::moniker-end
+<!-- :::item-end::: -->
+<!-- :::item name="azureDevOpsServiceConnection"::: -->
+:::moniker range=">azure-pipelines-server"
+
+**`azureDevOpsServiceConnection`** - **Azure DevOps service connection**<br>
+[Input alias](index.md#what-are-task-input-aliases): `connectedServiceNameAzureDevOps`. `string`. Required when `connectionType = connectedServiceNameAzureDevOps`.<br>
+<!-- :::editable-content name="helpMarkDown"::: -->
+Select an Azure DevOps service connection to use for invoking Azure DevOps REST APIs. The service connection URL is used as the baseURL.
 <!-- :::editable-content-end::: -->
 <br>
 
